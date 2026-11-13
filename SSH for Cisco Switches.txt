@@ -1,0 +1,34 @@
+SSH for Cisco Switches in EVENG
+
+When Netmiko does not want to connect - 
+pip install 'paramiko==3.5.1' <-- With Netmiko 4.8.0.
+
+en
+conf t
+ip domain-name lab.local
+crypto key generate rsa modulus 2048
+ip ssh version 2
+username admin priv 15 secret Cisco123
+hostname CORE
+!
+line vty 0 4
+ transport input ssh telnet
+ login local
+exit
+
+
+vrf def MGMT
+address-family ipv4 unicast
+end
+conf t
+int gi0/0
+no switchport
+vrf forw MGMT
+ip address 192.168.1.207 255.255.255.0 !IP ADDRESS
+no shut
+!
+ip route vrf MGMT 0.0.0.0 0.0.0.0 192.168.1.1
+!
+end 
+wr
+!
