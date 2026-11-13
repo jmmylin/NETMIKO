@@ -4,7 +4,7 @@ inv = [
             "device_type": "cisco_ios", 
             "host": "192.168.1.201",
             "username": "admin",
-            "password": "Cisco123",
+            "password": "XXXXXXX",
             }, 
         "hostname": "WAN1",
         "v950_ip": "10.254.0.98",
